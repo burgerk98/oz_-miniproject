@@ -1,0 +1,25 @@
+#randomImg{
+  width: 300px;
+}
+#hint{
+  font-size: 36px;
+}
+
+#answerBtn{
+  font-size: 20px;
+  width: 80px;
+  height: 40px;
+  border-radius: 12px;
+
+}
+input{
+  height: 40px;
+  width: 230px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 6px;
+  border: none;
+}
+input:focus{
+  outline: none;
+}

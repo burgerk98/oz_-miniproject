@@ -1,0 +1,23 @@
+button{
+  font-size: 20px;
+  width: 200px;
+  height: 40px;
+  border-radius: 12px;
+}
+p{
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+#btnWrap{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* #btnWrap > button :not(:last-child){
+  margin-bottom: px;
+} */
+button{
+  margin-bottom: 10px;
+}
