@@ -110,7 +110,7 @@ function copyLinkToClipboard() {
 
   document.body.removeChild(tempInput);
 
-  alert("링크가 복사되었습니다: " + currentUrl);
+  alert("🍀링크가 복사되었습니다🍀");
 }
 
 function getParameterByName(name, url) {
