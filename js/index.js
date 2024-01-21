@@ -124,15 +124,16 @@ function getParameterByName(name, url) {
 }
 
 
-startBtn.addEventListener('click', function() {
-  var count = localStorage.getItem('count');
-  count = count ? Number(count) + 1 : 1;
-  localStorage.setItem('count', count);
-  participantCount.innerText = count;
-  location.href='/html/icecreamPage.html';
-});
+// startBtn.addEventListener('click', function() {
+//   var count = localStorage.getItem('count');
+//   count = count ? Number(count) + 1 : 1;
+//   localStorage.setItem('count', count);
+//   participantCount.innerText = count;
+//   location.href='/html/icecreamPage.html';
+// });
 
-window.onload = function() {
-  var count = localStorage.getItem('count');
-  participantCount.innerText = count ? count : 0;
-};
+// window.onload = function() {
+//   var count = localStorage.getItem('count');
+//   participantCount.innerText = count ? count : 0;
+// };
+

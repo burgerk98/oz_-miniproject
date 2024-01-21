@@ -1,23 +1,87 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>배라 아이스크림 퀴즈!</title>
-  <link rel="stylesheet" href="/css/index.css">
-  <link rel="stylesheet" href="/css/reset.css">
-</head>
-<body>
-  <div id="container">
-    <div class="page">
-      <p id="startTitle">🍦배라 아이스크림 퀴즈!🍦</p>
-      <img src="/img/logo.svg">
-      <button class="btn-15" id="startBtn" >테스트 시작하기</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>배라 아이스크림 퀴즈!</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/reset.css" />
 
-      <p id="Participants">총 참여한 사람 수 : <span id="participantCount">0</span></p>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "firebase/app";
+      import { getAnalytics } from "firebase/analytics";
+      import { getFirestore } from "firebase/firestore";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBjQYsdLSevNNOS1jTywn1aAHv3B1jvnDk",
+        authDomain: "oz-miniproject-24f85.firebaseapp.com",
+        projectId: "oz-miniproject-24f85",
+        storageBucket: "oz-miniproject-24f85.appspot.com",
+        messagingSenderId: "194531623339",
+        appId: "1:194531623339:web:150bdf26d08fbb645d12ee",
+        measurementId: "G-1JL1Z86F7V",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      var db = firebase.firestore();
+
+      // 시작 버튼을 클릭하면 이용자 수를 증가시키는 이벤트 리스너를 추가합니다.
+      startBtn.addEventListener("click", function () {
+        db.collection("users")
+          .doc("userCount")
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              var currentCount = doc.data().count;
+              db.collection("users")
+                .doc("userCount")
+                .set({
+                  count: currentCount + 1,
+                });
+            } else {
+              db.collection("users").doc("userCount").set({
+                count: 1,
+              });
+            }
+            location.href = "/html/icecreamPage.html";
+          });
+      });
+
+      // 페이지가 로드되면 이용자 수를 가져와서 화면에 표시합니다.
+      window.onload = function () {
+        db.collection("users")
+          .doc("userCount")
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              participantCount.innerText = doc.data().count;
+            } else {
+              participantCount.innerText = 0;
+            }
+          });
+      };
+    </script>
+  </head>
+  <body>
+    <div id="container">
+      <div class="page">
+        <p id="startTitle">🍦배라 아이스크림 퀴즈!🍦</p>
+        <img src="/img/logo.svg" />
+        <button class="btn-15" id="startBtn">테스트 시작하기</button>
+
+        <p id="Participants">
+          총 참여한 사람 수 : <span id="participantCount">0</span>
+        </p>
+      </div>
     </div>
-  </div>
 
-  <script src="js/index.js"></script>
-</body>
+    <script src="js/index.js"></script>
+  </body>
 </html>
