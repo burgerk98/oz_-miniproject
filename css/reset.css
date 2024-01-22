@@ -42,3 +42,12 @@ button{
   justify-content: center;
   flex-direction: column;
 }
+.footer{
+  font-size: 10px;
+  position: absolute;
+  bottom: 10px;
+  color: #402022;
+}
+a{
+  color: #f04da3;
+}
