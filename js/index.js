@@ -1,7 +1,19 @@
+// import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+// import {
+//   getFirestore,
+//   doc,
+//   setDoc,
+//   getDoc,
+//   updateDoc,
+//   increment,
+// } from "firebase/firestore/lite";
+// import { async } from "@firebase/util";
+
 const word = document.getElementById("word");
 const nextBtn = document.getElementById("answerBtn");
-var startBtn = document.getElementById("startBtn");
-var participantCount = document.getElementById("participantCount");
+// var startBtn = document.getElementById("startBtn");
+// var participantCount = document.getElementById("participantCount");
 let quizArray = [
   {
     img: "/img/Bungeoppang.png",
@@ -123,17 +135,77 @@ function getParameterByName(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBjQYsdLSevNNOS1jTywn1aAHv3B1jvnDk",
+//   authDomain: "oz-miniproject-24f85.firebaseapp.com",
+//   projectId: "oz-miniproject-24f85",
+//   storageBucket: "oz-miniproject-24f85.appspot.com",
+//   messagingSenderId: "194531623339",
+//   appId: "1:194531623339:web:8d8cc72eb81007415d12ee",
+//   measurementId: "G-Q7HCCQBHY9",
+// };
 
-startBtn.addEventListener('click', function() {
-  var count = localStorage.getItem('count');
-  count = count ? Number(count) + 1 : 1;
-  localStorage.setItem('count', count);
-  participantCount.innerText = count;
-  location.href='/html/icecreamPage.html';
-});
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
 
-window.onload = function() {
-  var count = localStorage.getItem('count');
-  participantCount.innerText = count ? count : 0;
-};
+// startBtn.addEventListener('click', function() {
+//   var count = localStorage.getItem('count');
+//   count = count ? Number(count) + 1 : 1;
+//   localStorage.setItem('count', count);
+//   participantCount.innerText = count;
+//   location.href='/html/icecreamPage.html';
+// });
 
+// window.onload = function() {
+//   var count = localStorage.getItem('count');
+//   participantCount.innerText = count ? count : 0;
+// };
+
+// 참가자 수를 업데이트하는 함수
+// async function updateParticipantCount(db) {
+//   const countRef = doc(db, "participants", "counter");
+
+//   try {
+//     // 참가자 수를 가져온다
+//     const docSnap = await getDoc(countRef);
+
+//     if (docSnap.exists()) {
+//       // 문서가 존재하면 참가자 수를 1만큼 증가
+//       await updateDoc(countRef, {
+//         countRef: increment(1),
+//       });
+//     } else {
+//       // 문서가 존재하지 않으면 새로 만들고, 참가자 수를 1로 설정
+//       await setDoc(countRef, {
+//         count: 1,
+//       });
+//     }
+//   } catch (error) {
+//     console.error("Error updating participant count: ", error);
+//   }
+// }
+
+// async function displayParticipantCount(db) {
+//   const countRef = doc(db, "participants", "counter");
+
+//   try {
+//     const docSnap = await getDoc(countRef);
+//     if (docSnap.exists()) {
+//       participantCount.innerText = docSnap.data().count;
+//     } else {
+//       participantCount.innerText = 0;
+//     }
+//   } catch (error) {
+//     console.error("Error fetching participant count: ", error);
+//   }
+// }
+
+// startBtn.addEventListener("click", function () {
+//   updateParticipantCount(db);
+//   location.href = "/html/icecreamPage.html";
+// });
+
+// window.onload = function () {
+//   displayParticipantCount(db);
+// };
