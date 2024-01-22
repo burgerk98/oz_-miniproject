@@ -16,6 +16,7 @@ img{
   font-size: 40px;
   font-weight: bold;
   margin-bottom: 30px;
+  color: #402022;
 }
 
 #startBtn {
@@ -37,6 +38,7 @@ img{
 
 #startBtn:hover{
   background-color: #f04da3;
+  color: #fff;
 }
 
 
@@ -44,6 +46,7 @@ img{
 
 #Participants{
   margin-top: 25px;
+  color: #402022;
 }
 
 

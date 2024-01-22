@@ -4,6 +4,7 @@
 #hint{
   font-size: 36px;
   margin-bottom: 10px;
+  color: #402022;
 }
 
 #answerBtn{
@@ -12,16 +13,19 @@
   height: 50px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  background-color: #fc70ba;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+#answerBtn:hover{
   background-color: #f04da3;
-  color: white;
-
+  box-shadow: inset 0px 0px 8px 3px #fc70ba;
 }
 #input{
   display: flex;
-  border:  3px solid #f04da3;
+  border:  3px solid #fc70ba;
   border-radius: 24px;
 }
-
 
 input{
   height: 50px;
@@ -30,12 +34,13 @@ input{
   text-align: center;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-
+  color: #402022;
   border: none;
 }
 input:focus{
   outline: none;
 }
+
 
 .page{
   position: relative;
@@ -47,20 +52,20 @@ progress {
   appearance: none;
   position: absolute;
   top: 20px;
-  border: 3px solid #f04da3;
+  border: 3px solid #fc70ba;
   border-radius:20px ;
 }
 
 progress::-webkit-progress-bar {
   /* progressbar의 배경이 되는 요소 */
   border-radius: 20px;
-  background-color: #f6f6f6;
+  background-color: #fff;
 }
 
 progress::-webkit-progress-value {
   /* progress의 진행 bar가 되는 요소 */
   border-radius: 20px;
-  background-color: #f04da3;
+  background-color: #fc70ba;
 }
 
 /* 화면 크기가 500px 미만일 때 */

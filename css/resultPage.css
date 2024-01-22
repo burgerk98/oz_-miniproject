@@ -6,10 +6,16 @@ button{
   margin-bottom: 10px;
   color: white;
   background-color:#402022 ;
+  transition: all 0.3s ease;
+}
+button:hover{
+  background-color: #f04da3;
+  color: #fff;
 }
 p{
   font-size: 35px;
   margin-bottom: 20px;
+  color: #402022
 }
 #btnWrap{
   display: flex;
@@ -24,5 +30,9 @@ p{
 
 button:not(:last-child){
   background-color:#f04da3;
+  transition: all 0.3s ease;
 }
-
+button:not(:last-child):hover{
+  color: white;
+  background-color:#402022 
+}

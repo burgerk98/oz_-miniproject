@@ -32,8 +32,14 @@ button{
   justify-content: center;
   
 }
+html{
+  /* background-image: url('/img/AdobeStock_430307249.jpeg'); */
+  background-image: url('/img/스프링클(흰).png');
+  background-size: 700px;
+  
+}
 .page{
-  background-color: #f2a7be;
+  
   max-width: 500px;
   width: 500px;
   height: 100%;
