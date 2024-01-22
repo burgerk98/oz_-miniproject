@@ -21,5 +21,82 @@
     </div>
 
     <script src="js/index.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
+      import {
+        getFirestore,
+        doc,
+        setDoc,
+        getDoc,
+        updateDoc,
+        increment,
+      } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBjQYsdLSevNNOS1jTywn1aAHv3B1jvnDk",
+        authDomain: "oz-miniproject-24f85.firebaseapp.com",
+        projectId: "oz-miniproject-24f85",
+        storageBucket: "oz-miniproject-24f85.appspot.com",
+        messagingSenderId: "194531623339",
+        appId: "1:194531623339:web:8d8cc72eb81007415d12ee",
+        measurementId: "G-Q7HCCQBHY9",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      var startBtn = document.getElementById("startBtn");
+      var participantCount = document.getElementById("participantCount");
+
+      // 참가자 수를 업데이트하는 함수
+      async function updateParticipantCount(db) {
+        const countRef = doc(db, "participants", "counter");
+
+        try {
+          // 참가자 수를 가져온다
+          const docSnap = await getDoc(countRef);
+
+          if (docSnap.exists()) {
+            // 문서가 존재하면 참가자 수를 1만큼 증가
+            await updateDoc(countRef, {
+              count: increment(1),
+            });
+          } else {
+            // 문서가 존재하지 않으면 새로 만들고, 참가자 수를 1로 설정
+            await setDoc(countRef, {
+              count: 1,
+            });
+          }
+        } catch (error) {
+          console.error("Error updating participant count: ", error);
+        }
+      }
+
+      async function displayParticipantCount(db) {
+        const countRef = doc(db, "participants", "counter");
+
+        try {
+          const docSnap = await getDoc(countRef);
+          if (docSnap.exists()) {
+            participantCount.innerText = docSnap.data().count;
+          } else {
+            participantCount.innerText = 0;
+          }
+        } catch (error) {
+          console.error("Error fetching participant count: ", error);
+        }
+      }
+
+      startBtn.addEventListener("click",async function () {
+        await updateParticipantCount(db);
+        location.href = "/html/icecreamPage.html";
+      });
+
+      window.onload = function () {
+        displayParticipantCount(db);
+      };
+    </script>
   </body>
 </html>
